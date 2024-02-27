@@ -17,7 +17,7 @@ count = 0
 
 for i in range(atas):
     if i >= bawah and i % 2 != 0:
-        count+=1
+        count+=i
         print(i)
 
 print ("\n========================================")
