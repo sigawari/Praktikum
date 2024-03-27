@@ -12,30 +12,23 @@ print(f"Luas Lingkaran: {lingkaran.hitungLuas()}") # Output: Luas Lingkaran:
 import math #memanggil math bawaan python
 
 class BangunDatar: #class abstrak untuk pendefinisian
-    def __init__(self):
-        pass
+    def __init__(self, sisi, jari):
+        self.sisi = sisi
+        self.jari = jari
 
     def hitungLuas(self):
         pass
 
 class Persegi(BangunDatar):
-    def __init__(self, sisi):
-        super().__init__()
-        self.sisi = sisi
-
     def hitungLuas(self):
         return self.sisi ** 2
 
 class Lingkaran(BangunDatar):
-    def __init__(self, jarijari):
-        super().__init__()
-        self.jarijari = jarijari
-
     def hitungLuas(self):
-        return math.pi * self.jarijari ** 2
+        return math.pi * self.jari ** 2
 
-persegi = Persegi(5)
-lingkaran = Lingkaran(3)
+persegi = Persegi(5, None)  # Persegi memiliki sisi, tapi tidak memerlukan jari-jari
+lingkaran = Lingkaran(None, 3)  # Lingkaran memiliki jari-jari, tapi tidak memerlukan sisi
 
-print(f"Luas Persegi: {persegi.hitungLuas()}")
-print(f"Luas Lingkaran: {lingkaran.hitungLuas()}")
+for bangundat in (persegi, lingkaran):  # Menggunakan objek yang sudah dibuat
+    print(f"Luas: {bangundat.hitungLuas()}")  # Memanggil metode hitungLuas() 
