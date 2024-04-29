@@ -1,9 +1,6 @@
 import pygame
 import random
 
-# Abstraction: We'll abstract away the implementation details of the Sudoku board and cell into classes,
-# hiding the complexity behind simple interfaces.
-
 class SudokuCell:
     def __init__(self, value, row, col, size, font):
         self.value = value
@@ -14,12 +11,12 @@ class SudokuCell:
         self.selected = False
 
     def draw(self, screen):
-        # Draw the cell with value if not empty
+        # Draw cell jika tidak kosong
         if self.value != 0:
             text = self.font.render(str(self.value), True, (0, 0, 0))
             text_rect = text.get_rect(center=(self.col * self.size + self.size // 2, self.row * self.size + self.size // 2))
             screen.blit(text, text_rect)
-        # Draw selection highlight if selected
+        # Untuk higlight
         if self.selected:
             pygame.draw.rect(screen, (255, 0, 0), (self.col * self.size, self.row * self.size, self.size, self.size), 3)
 
@@ -115,10 +112,10 @@ def main():
         game.draw(screen)  # Call draw method of SudokuGame
         pygame.display.flip()
 
-        # for event in pygame.event.get():
-        #     if event.type == pygame.QUIT:
-        #         running = False
-        #     game.handle_event(event)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            game.handle_event(event)
 
         clock.tick(30)
 
